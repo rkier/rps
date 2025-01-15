@@ -1,7 +1,8 @@
 console.log("hello world")
 
 
-
+let humanScore = 0
+let computerScore = 0
 
 let computerChoice
 
