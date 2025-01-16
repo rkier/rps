@@ -1,12 +1,13 @@
-console.log("hello world")
+
 
 
 let humanScore = 0
 let computerScore = 0
-
+let humanChoice 
 let computerChoice
 
 function getComputerChoice() {
+
     let rando = Math.random();
     if (rando > .33 && rando < .66) {
      computerChoice = "rock" 
@@ -15,14 +16,20 @@ function getComputerChoice() {
 } else if (rando > .66) {
     computerChoice = "scissors" 
 }
-return computerChoice;
+console.log(computerChoice);
+}
+
+function getHumanChoice() {
+   
+ {humanChoice = prompt("rock paper scissors")} 
+console.log(humanChoice);
 }
 
 
-let humanChoice = prompt("rock paper scissors")
 let result
 
 function playRound() {
+    
 
 if (computerChoice === "rock" && humanChoice === "paper" ) {
     result = "win"
@@ -37,14 +44,37 @@ if (computerChoice === "rock" && humanChoice === "paper" ) {
 } else if (computerChoice === "scissors" && humanChoice === "rock") {
     result = "win"  
 } else if (computerChoice === humanChoice) {
-    result = "tie"} 
+    result = "tie" 
+} if (result === "win") {
+    humanScore = ++humanScore;
+} else if (result === "loss") {
+    computerScore === ++computerScore;
+} 
 
-return result;
+console.log("computer's score: ", computerScore);
+console.log("your score: ", humanScore);
+
+console.log(result);
+
 
 }
 
+function playGame() {
 
-console.log(humanChoice)
-console.log(getComputerChoice())
-console.log(playRound())
+    if (humanScore === 5) {
+        alert("You Win!")
+    } else if (computerScore === 5) {
+        alert("You Lose!")
+    } else {
+ 
+    
+getComputerChoice();
+getHumanChoice();
+playRound();
+playGame();
+    }
+}
+playGame()
+
+
 
