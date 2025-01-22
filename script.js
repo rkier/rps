@@ -9,26 +9,34 @@ let computerChoice
 function getComputerChoice() {
 
     let rando = Math.random();
-    if (rando > .33 && rando < .66) {
+    if (rando >= .33 && rando < .66) {
      computerChoice = "rock" 
 } else if (rando < .33) {
     computerChoice = "paper"
 } else if (rando > .66) {
     computerChoice = "scissors" 
 }
-console.log(computerChoice);
+
+}
+const input = document.querySelector("input");
+const button = document.querySelector("button");
+const playerScoreResult = document.querySelector(".playerScore")
+const cpuScoreResult = document.querySelector(".cpuScore")
+const msg = document.querySelector(".msg")
+
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    playerScoreResult.textContent = `your score: ${humanScore}`;
+    cpuScoreResult.textContent = `computer score: ${computerScore}`;
+    alert("New Game");
 }
 
-function getHumanChoice() {
-   
- {humanChoice = prompt("rock paper scissors")} 
-console.log(humanChoice);
-}
 
-
-let result
 
 function playRound() {
+
+    let result;
     
 
 if (computerChoice === "rock" && humanChoice === "paper" ) {
@@ -45,14 +53,19 @@ if (computerChoice === "rock" && humanChoice === "paper" ) {
     result = "win"  
 } else if (computerChoice === humanChoice) {
     result = "tie" 
+    //msg.textContent = 
 } if (result === "win") {
-    humanScore = ++humanScore;
+    humanScore++;
 } else if (result === "loss") {
-    computerScore === ++computerScore;
+    computerScore++;
 } 
 
 console.log("computer's score: ", computerScore);
 console.log("your score: ", humanScore);
+playerScoreResult.textContent = `your score:  ${humanScore}`;
+cpuScoreResult.textContent = `computer's score:  ${computerScore}`;
+msg.textContent = `you chose: ${humanChoice}          cpu chose: ${computerChoice}`
+
 
 console.log(result);
 
@@ -61,20 +74,47 @@ console.log(result);
 
 function playGame() {
 
-    if (humanScore === 5) {
-        alert("You Win!")
-    } else if (computerScore === 5) {
+    if (humanScore === 3) {
+        alert("You Win!");
+        resetGame();
+    } else if (computerScore === 3) {
         alert("You Lose!")
-    } else {
- 
-    
-getComputerChoice();
-getHumanChoice();
-playRound();
-playGame();
-    }
+        resetGame();
+    } 
 }
-playGame()
+
+ 
+function getChoices() {
+   
+    button.addEventListener("click", () => {
+        getComputerChoice();
+     humanChoice = input.value;
+    input.value ="";
+    
+
+    
+    
+    input.focus();
+    console.log(humanChoice);
+    console.log(computerChoice);
+
+    
+    
+    playRound();
+    playGame();
+  })
+}
+  
+ 
+
+
+    
+//getComputerChoice();
+//getchoices();
+
+    
+
+getChoices()
 
 
 
